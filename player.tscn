@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1j8wjycdttr5"]
+[gd_scene load_steps=4 format=3 uid="uid://c1j8wjycdttr5"]
 
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_uwi8g"]
 [ext_resource type="Texture2D" uid="uid://bixmf4cgexd6q" path="res://assets/Flappy Bird Assets/Sprites/bird.png" id="2_2to2r"]
@@ -6,19 +6,16 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bsjg6"]
 radius = 15.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jju2e"]
-size = Vector2(104, 650)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_preiw"]
-size = Vector2(951, 107)
-
 [node name="Player" type="Node2D"]
+metadata/_edit_group_ = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(150, 95)
 scale = Vector2(1.12, 1)
 script = ExtResource("1_uwi8g")
 metadata/_edit_group_ = true
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+scale = Vector2(0.892857, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(-4.76837e-07, -4.76837e-07)
@@ -27,40 +24,3 @@ texture = ExtResource("2_2to2r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CapsuleShape2D_bsjg6")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="wall" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(42, 315)
-shape = SubResource("RectangleShape2D_jju2e")
-metadata/_edit_group_ = true
-
-[node name="Panel" type="Panel" parent="StaticBody2D/wall"]
-offset_left = 51.0
-offset_top = -323.0
-offset_right = 135.0
-offset_bottom = -243.0
-scale = Vector2(-1.16, 8.16)
-
-[node name="wall2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1100, 322)
-shape = SubResource("RectangleShape2D_jju2e")
-metadata/_edit_group_ = true
-
-[node name="Panel" type="Panel" parent="StaticBody2D/wall2"]
-offset_left = 51.0
-offset_top = -323.0
-offset_right = 135.0
-offset_bottom = -243.0
-scale = Vector2(-1.16, 8.16)
-
-[node name="floor" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(570.5, 584)
-shape = SubResource("RectangleShape2D_preiw")
-metadata/_edit_group_ = true
-
-[node name="Panel" type="Panel" parent="StaticBody2D/floor"]
-offset_left = -479.0
-offset_top = -60.0
-offset_right = 483.0
-offset_bottom = 61.0
